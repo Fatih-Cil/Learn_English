@@ -5,7 +5,7 @@ import { TurkishEnglishComponent } from './pages/turkish-english/turkish-english
 
 const routes: Routes = [
   {path:"",component:EnglishTurkishComponent},
-  {path:"tr-en",component:TurkishEnglishComponent},
+  
 ];
 
 @NgModule({
