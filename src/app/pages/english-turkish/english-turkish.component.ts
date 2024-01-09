@@ -98,6 +98,10 @@ export class EnglishTurkishComponent implements OnInit {
      this.isTranslationCorrect=true;
  
    }
+   hint(){
+    this.userInput=this.turkishEquivalent.substring(0,2);
+    
+  }
  
    autoget=()=>{
  // Rastgele bir kelime seçme
@@ -968,6 +972,10 @@ console.log("Türkçe:", this.turkishEquivalent2);
     this.userInput2=this.randomKey2;
     this.isTranslationCorrect2=true;
 
+  }
+  hint2(){
+    this.userInput2=this.randomKey2.substring(0,2);
+    
   }
 
   del2(){

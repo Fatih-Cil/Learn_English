@@ -11,14 +11,19 @@
   
             <div class="mb-3">
               <label class="form-label">English Word</label>
+             
               <input class="form-control" value="{{randomKey}}" readonly>
+            
               <div class="d-flex justify-content-end my-3"><button type="button" class="btn btn-danger btn-block" (click)="del()">Don't Show Again
               </button></div>
               
             </div>
             <div class="mb-3">
               <label class="form-label">Turkish Word</label>
+              <div class="d-flex align-items-center">
               <input [ngStyle]="{'background-color': isTranslationCorrect ? 'green' : 'red','color': 'white'} " class="form-control"  [(ngModel)]="userInput" (input)="checkTranslation()">
+              <button type="button" class="btn btn-outline-dark" (click)="hint()">hint</button>
+            </div>
             </div>
            
   
@@ -90,14 +95,19 @@
   
             <div class="mb-3">
               <label class="form-label">Türkçe Kelime</label>
+              
               <input class="form-control" value="{{turkishEquivalent2}}" readonly>
-              <div class="d-flex justify-content-end my-3"><button type="button" class="btn btn-danger btn-block" (click)="del2()">Artık Gösterme
+              
+              <div class="d-flex justify-content-end my-3"><button type="button" class="btn btn-danger btn-block" (click)="del2()">Tekrar Gösterme
               </button></div>
               
             </div>
             <div class="mb-3">
               <label class="form-label">İngilizce Kelime</label>
+              <div class="d-flex align-items-center">
               <input [ngStyle]="{'background-color': isTranslationCorrect2 ? 'green' : 'red','color': 'white'} " class="form-control"  [(ngModel)]="userInput2" (input)="checkTranslation2()">
+              <button type="button" class="btn btn-outline-dark" (click)="hint2()">İpucu</button>
+            </div>
             </div>
            
   
