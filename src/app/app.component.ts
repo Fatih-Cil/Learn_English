@@ -6,10 +6,14 @@ import { Subscription, interval } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent implements OnInit {
 
+  
   title = 'Learn_English';
   verbDictionary = new Map();
+  Dictionary = new Map();
  randomKey:any;
  turkishEquivalent:any;
  autorandomKey:any="English";
@@ -21,6 +25,8 @@ export class AppComponent implements OnInit {
 
 
 
+ 
+
 
   constructor() {
    
@@ -28,6 +34,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     
     this.load();
     this.get();
@@ -111,6 +118,10 @@ this.turkishEquivalent = this.verbDictionary.get(this.randomKey);
 console.log("İngilizce:", this.randomKey);
 console.log("Türkçe:", this.turkishEquivalent);
   }
+
+
+  
+
 
   load(){
    
@@ -935,3 +946,6 @@ this.verbDictionary.set("specific", "belirli");
   
 
 }
+
+
+

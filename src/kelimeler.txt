@@ -1,0 +1,4 @@
+car:araba
+house:ev
+we:biz
+yellow:sarı
