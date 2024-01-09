@@ -7,11 +7,14 @@
         </div>
         <div class="card-body">
           <h5 class="card-title">Toplam kelime sayısı: {{verbDictionary.size}}</h5>
-          <p class="card-text">Rastgele gelen kelimeler ile kelime bilgini sına.</p>
+          <p class="card-text">Kendini Sına!</p>
 
           <div class="mb-3">
             <label class="form-label">İngilizce Kelime</label>
             <input class="form-control" value="{{randomKey}}" readonly>
+            <div class="d-flex justify-content-end my-3"><button type="button" class="btn btn-danger btn-block" (click)="del()">Artık Gösterme
+            </button></div>
+            
           </div>
           <div class="mb-3">
             <label class="form-label">Türkçe Kelime</label>
@@ -24,10 +27,9 @@
             <div class="col-md-6 mb-3">
               <button type="button" class="btn btn-primary btn-block" (click)="get()">Atla </button>
             </div>
-            <div class="col-md-6 mb-3">
-              <button type="button" class="btn btn-danger btn-block" (click)="del()">Artık Gösterme
-              </button>
-              <button type="button" class="btn btn-success btn-block" (click)="showWord()">Cevabı Göster
+            <div class="col-md-6 mb-3 d-flex justify-content-end">
+              
+              <button type="button" class="btn btn-success btn-block " (click)="showWord()">Cevabı Göster
               </button>
             </div>
           </div>
