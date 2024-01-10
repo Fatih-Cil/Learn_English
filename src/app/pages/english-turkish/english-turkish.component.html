@@ -21,8 +21,8 @@
             <div class="mb-3">
               <label class="form-label">Turkish Word</label>
               <div class="d-flex align-items-center">
-              <input [ngStyle]="{'background-color': isTranslationCorrect ? 'green' : 'red','color': 'white'} " class="form-control"  [(ngModel)]="userInput" (input)="checkTranslation()">
-              <button type="button" class="btn btn-outline-dark" (click)="hint()">hint</button>
+              <input #userInputField [ngStyle]="{'background-color': isTranslationCorrect ? 'green' : 'red','color': 'white'} " class="form-control"  [(ngModel)]="userInput" (input)="checkTranslation()">
+              <button type="button" class="btn btn-outline-dark mx-2" (click)="hint()">hint</button>
             </div>
             </div>
            
@@ -78,9 +78,21 @@
                 <button type="button" class="btn btn-primary btn-lg">{{autoturkishEquivalent}}</button>
               </div>
             </div>
+            <hr>
+            <h5 class="card-title d-flex justify-content-center my-3">Eş Anlamlı (Synonyms) Kelimeler</h5>
+            <div class="container">
+            <div class="col-md-12 d-flex justify-content-center my-3">
+              <button type="button" class="btn btn-secondary btn-lg">{{randomWord.word}}</button>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center my-3">
+              <button *ngFor="let synonym of randomWord.synonyms" type="button" class="btn btn-outline-primary">{{synonym}}</button>
+            </div>
+          </div>
           </div>
         </div>
-  
+        
+        
+        
   
       </div>
 
@@ -105,8 +117,8 @@
             <div class="mb-3">
               <label class="form-label">İngilizce Kelime</label>
               <div class="d-flex align-items-center">
-              <input [ngStyle]="{'background-color': isTranslationCorrect2 ? 'green' : 'red','color': 'white'} " class="form-control"  [(ngModel)]="userInput2" (input)="checkTranslation2()">
-              <button type="button" class="btn btn-outline-dark" (click)="hint2()">İpucu</button>
+              <input #userInputField [ngStyle]="{'background-color': isTranslationCorrect2 ? 'green' : 'red','color': 'white'} " class="form-control"  [(ngModel)]="userInput2" (input)="checkTranslation2()">
+              <button type="button" class="btn btn-outline-dark mx-2" (click)="hint2()">İpucu</button>
             </div>
             </div>
            

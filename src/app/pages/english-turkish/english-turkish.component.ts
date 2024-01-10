@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
+import { SynonymsService } from '../services/synonyms.service';
 
 @Component({
   selector: 'app-english-turkish',
@@ -8,7 +9,7 @@ import { Subscription, interval } from 'rxjs';
 })
 export class EnglishTurkishComponent implements OnInit {
 
-
+  @ViewChild('userInputField2') userInputField2!: ElementRef;
   verbDictionary = new Map();
   verbDictionary2 = new Map();
   
@@ -25,10 +26,10 @@ export class EnglishTurkishComponent implements OnInit {
   isTranslationCorrect: boolean = false; // Türkçe kelimenin doğruluğu
   isTranslationCorrect2: boolean = false; // İngilizce kelimenin doğruluğu
  
+  randomWord!: { word: string, synonyms: string[] };
  
  
- 
-   constructor() {
+   constructor(private synonymsService:SynonymsService) {
     
      
    }
@@ -111,6 +112,7 @@ export class EnglishTurkishComponent implements OnInit {
  // Seçilen kelimenin Türkçe karşılığını alma
  this.autoturkishEquivalent = this.verbDictionary.get(this.autorandomKey);
  
+ this.randomWord = this.synonymsService.getAllSynonymsForRandomWord();
      
    }
  
@@ -128,6 +130,8 @@ export class EnglishTurkishComponent implements OnInit {
  // Sonucu ekrana basma
  console.log("İngilizce:", this.randomKey);
  console.log("Türkçe:", this.turkishEquivalent);
+
+ 
    }
  
    
@@ -1147,15 +1151,19 @@ this.turkishEquivalent2 = this.verbDictionary2.get(this.randomKey2);
 // Sonucu ekrana basma
 console.log("İngilizce:", this.randomKey2);
 console.log("Türkçe:", this.turkishEquivalent2);
+
+
   }
 
   showWord2(){
     this.userInput2=this.randomKey2;
     this.isTranslationCorrect2=true;
+    
 
   }
   hint2(){
     this.userInput2=this.randomKey2.substring(0,2);
+    
     
   }
 
