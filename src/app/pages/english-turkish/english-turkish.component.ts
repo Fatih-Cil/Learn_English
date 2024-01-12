@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Subscription, interval } from 'rxjs';
+import { Subscription, interval, map, of, take, zip } from 'rxjs';
 import { SynonymsService } from '../services/synonyms.service';
+import { IrregularverbsService } from '../services/irregularverbs.service';
 
 @Component({
   selector: 'app-english-turkish',
@@ -27,9 +28,10 @@ export class EnglishTurkishComponent implements OnInit {
   isTranslationCorrect2: boolean = false; // İngilizce kelimenin doğruluğu
  
   randomWord!: { word: string, synonyms: string[] };
+  randomIrregularVerbWord!: { word: string, irregularVerb: string[] };
  
  
-   constructor(private synonymsService:SynonymsService) {
+   constructor(private synonymsService:SynonymsService, private irregularVerbsService:IrregularverbsService) {
     
      
    }
@@ -40,6 +42,8 @@ export class EnglishTurkishComponent implements OnInit {
      this.load2();
      this.get();
      this.get2();
+     this.getIrregularVerbWord();
+     this.getSynonymsWord();
  
      this.startInterval();
      
@@ -112,9 +116,27 @@ export class EnglishTurkishComponent implements OnInit {
  // Seçilen kelimenin Türkçe karşılığını alma
  this.autoturkishEquivalent = this.verbDictionary.get(this.autorandomKey);
  
- this.randomWord = this.synonymsService.getAllSynonymsForRandomWord();
+
+
+ 
+ 
      
    }
+
+   getSynonymsWord(){
+    
+    this.randomWord = this.synonymsService.getAllSynonymsForRandomWord();
+    
+
+   }
+
+   getIrregularVerbWord(){
+    
+    this.randomIrregularVerbWord = this.irregularVerbsService.getAllIrregularVerbsForRandomWord();
+    
+
+   }
+  
  
    get(){
  
