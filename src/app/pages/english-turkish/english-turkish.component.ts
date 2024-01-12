@@ -11,7 +11,8 @@ import { PhrasalverbsService } from '../services/phrasalverbs.service';
 })
 export class EnglishTurkishComponent implements OnInit {
 
-  @ViewChild('userInputField2') userInputField2!: ElementRef;
+  @ViewChild('userInputField', { static: false }) userInputField!: ElementRef;
+@ViewChild('userInputEnField', { static: false }) userInputEnField!: ElementRef;
   verbDictionary = new Map();
   verbDictionary2 = new Map();
   
@@ -24,7 +25,7 @@ export class EnglishTurkishComponent implements OnInit {
   selectedWaitTime: number = 5;
   private intervalSubscription: Subscription | undefined;
   userInput: string = ''; // Kullanıcının girdiği Türkçe kelime
-  userInput2: string = ''; // Kullanıcının girdiği İngilizce kelime
+  userInputEn: string = ''; // Kullanıcının girdiği İngilizce kelime
   isTranslationCorrect: boolean = false; // Türkçe kelimenin doğruluğu
   isTranslationCorrect2: boolean = false; // İngilizce kelimenin doğruluğu
  
@@ -42,13 +43,21 @@ export class EnglishTurkishComponent implements OnInit {
     
      
    }
+
+   ngAfterViewInit() {
+    // Artık this.userInputField kullanılabilir
+    this.get2();
+    this.get();
+    
+  }
+
  
    ngOnInit(): void {
      
      this.load();
      this.load2();
-     this.get();
-     this.get2();
+     
+     
      this.getIrregularVerbWord();
      this.getSynonymsWord();
      this.getPhrasalVerbWord();
@@ -57,7 +66,12 @@ export class EnglishTurkishComponent implements OnInit {
      
      
    }
- 
+ inputFocus(){
+  this.userInputField.nativeElement.focus();
+ }
+ inputEnFocus(){
+  this.userInputEnField.nativeElement.focus();
+ }
  
    checkTranslation() {
      // Kullanıcının girdiği kelimeyi kontrol et
@@ -65,7 +79,7 @@ export class EnglishTurkishComponent implements OnInit {
    }
    checkTranslation2() {
     // Kullanıcının girdiği kelimeyi kontrol et
-    this.isTranslationCorrect2 = this.userInput2.toLowerCase() === this.randomKey2.toLowerCase();
+    this.isTranslationCorrect2 = this.userInputEn.toLowerCase() === this.randomKey2.toLowerCase();
   }
  
    ngOnDestroy() {
@@ -102,6 +116,7 @@ export class EnglishTurkishComponent implements OnInit {
      this.verbDictionary.delete(this.randomKey);
      console.log("Silindi:", this.randomKey);
      this.get();
+     this.inputFocus();
      
  
    }
@@ -109,10 +124,13 @@ export class EnglishTurkishComponent implements OnInit {
    showWord(){
      this.userInput=this.turkishEquivalent;
      this.isTranslationCorrect=true;
+     this.inputFocus();
+     
  
    }
    hint(){
     this.userInput=this.turkishEquivalent.substring(0,2);
+    this.inputFocus();
     
   }
  
@@ -152,7 +170,7 @@ export class EnglishTurkishComponent implements OnInit {
   
  
    get(){
- 
+    this.inputFocus();
      this.userInput="";
      this.isTranslationCorrect=false;
      // Rastgele bir kelime seçme
@@ -161,6 +179,8 @@ export class EnglishTurkishComponent implements OnInit {
  
  // Seçilen kelimenin Türkçe karşılığını alma
  this.turkishEquivalent = this.verbDictionary.get(this.randomKey);
+
+ 
  
  // Sonucu ekrana basma
  console.log("İngilizce:", this.randomKey);
@@ -1173,8 +1193,8 @@ this.verbDictionary.set("zoom", "yakınlaşmak, zoom yapmak");
 }
 
    get2(){
- 
-    this.userInput2="";
+    this.inputEnFocus();
+    this.userInputEn="";
     this.isTranslationCorrect2=false;
     // Rastgele bir kelime seçme
 let keys2 = Array.from(this.verbDictionary2.keys());
@@ -1188,26 +1208,28 @@ console.log("İngilizce:", this.randomKey2);
 console.log("Türkçe:", this.turkishEquivalent2);
 
 
+
+
   }
 
   showWord2(){
-    this.userInput2=this.randomKey2;
+    this.userInputEn=this.randomKey2;
     this.isTranslationCorrect2=true;
-    
+    this.inputEnFocus();
 
   }
   hint2(){
-    this.userInput2=this.randomKey2.substring(0,2);
-    
-    
+    this.userInputEn=this.randomKey2.substring(0,2);
+    this.inputEnFocus();
   }
 
   del2(){
  
     this.verbDictionary2.delete(this.randomKey2);
     console.log("Silindi:", this.randomKey2);
+   
     this.get2();
-    
+    this.inputEnFocus();
 
   }
  

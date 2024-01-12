@@ -73,7 +73,7 @@
             <div class="d-flex align-items-center">
               <input #userInputField
                 [ngStyle]="{'background-color': isTranslationCorrect2 ? 'green' : 'red','color': 'white'} "
-                class="form-control" [(ngModel)]="userInput2" (input)="checkTranslation2()">
+                class="form-control"#userInputEnField [(ngModel)]="userInputEn" (input)="checkTranslation2()">
               <button type="button" class="btn btn-outline-dark mx-2" (click)="hint2()">İpucu</button>
             </div>
           </div>
