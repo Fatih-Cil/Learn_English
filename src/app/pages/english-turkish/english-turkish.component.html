@@ -94,7 +94,7 @@
       </div>
     </div>
 
-    
+
 
     <div class="col-md-6 mb-3">
       <div class="card">
@@ -114,7 +114,7 @@
             <div class="col-md-12 d-flex justify-content-center my-3">
               <button *ngFor="let synonym of randomWord.synonyms" type="button"
                 class="btn btn-outline-primary">{{synonym}}</button>
-                
+
             </div>
 
           </div>
@@ -125,7 +125,11 @@
     <div class="col-md-6 mb-3">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title">Düzensiz Fiiller (Irregular Verbs)</h5>
+          <h5 class="card-title">Düzensiz Fiiller (Irregular Verbs)
+            <span class="text-danger">V1</span> |
+            <span class="text-primary">V2</span> |
+            <span class="text-success">V3</span>
+          </h5>
         </div>
         <div class="card-body">
           <div class="col-md-12 mb-3 d-flex justify-content-center">
@@ -134,20 +138,45 @@
             </button>
           </div>
           <div class="container">
-            
-            <div class="col-md-12 d-flex justify-content-center my-3">
-
-              <button *ngFor="let irregularVerb of randomIrregularVerbWord.irregularVerb" type="button"
-                class="btn btn-outline-primary">{{irregularVerb}}</button>
-            </div>
             <div class="col-md-12 d-flex justify-content-center my-3">
               <button type="button" class="btn btn-secondary btn-lg">{{randomIrregularVerbWord.word}}</button>
             </div>
+            <div class="col-md-12 d-flex justify-content-center my-3">
+
+              <button *ngFor="let irregularVerb of randomIrregularVerbWord.irregularVerb;let i = index" type="button"
+                class="btn" [ngClass]="{'btn-outline-danger': i === 0, 'btn-outline-primary': i === 1, 'btn-outline-success': i === 2}">{{irregularVerb}}</button>
+            </div>
+            
           </div>
         </div>
       </div>
     </div>
 
+    <div class="col-md-6 mb-3">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Deyimsel/Edatlı Fiiller (Phrasal Verbs)</h5>
+        </div>
+        <div class="card-body">
+          <div class="col-md-12 mb-3 d-flex justify-content-center">
+
+            <button type="button" class="btn btn-success btn-block " (click)="getPhrasalVerbWord()">Getir
+            </button>
+          </div>
+          <div class="container">
+
+            <div class="col-md-12 d-flex justify-content-center my-3">
+
+              <button type="button" class="btn btn-secondary">{{randomPhrasalVerbWord.word}}</button>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center my-3">
+              <button type="button" class="btn btn-outline-primary">{{randomPhrasalVerbWord.phrasalVerb}}</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <div class="col-md-6 mb-3">
@@ -174,17 +203,20 @@
             </button>
 
           </div>
-          <div class="my-3">
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <button type="button" class="btn btn-secondary btn-lg">{{autorandomKey}}</button>
-              </div>
-              <div class="col-md-6 mb-3 d-flex justify-content-end">
+         
+            <div class="container my-3">
 
-                <button type="button" class="btn btn-primary btn-lg">{{autoturkishEquivalent}}</button>
+              <div class="col-md-12 d-flex justify-content-center my-3">
+  
+                <button type="button" class="btn btn-secondary ">{{autorandomKey}}</button>
+              </div>
+              <div class="col-md-12 d-flex justify-content-center my-3">
+                <button type="button" class="btn btn-outline-primary ">{{autoturkishEquivalent}}</button>
+  
               </div>
             </div>
-          </div>
+            
+          
 
 
 

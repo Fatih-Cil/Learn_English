@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subscription, interval, map, of, take, zip } from 'rxjs';
 import { SynonymsService } from '../services/synonyms.service';
 import { IrregularverbsService } from '../services/irregularverbs.service';
+import { PhrasalverbsService } from '../services/phrasalverbs.service';
 
 @Component({
   selector: 'app-english-turkish',
@@ -29,9 +30,15 @@ export class EnglishTurkishComponent implements OnInit {
  
   randomWord!: { word: string, synonyms: string[] };
   randomIrregularVerbWord!: { word: string, irregularVerb: string[] };
+  randomPhrasalVerbWord!: { word: string, phrasalVerb: string};
  
  
-   constructor(private synonymsService:SynonymsService, private irregularVerbsService:IrregularverbsService) {
+   constructor(
+    private synonymsService:SynonymsService, 
+    private irregularVerbsService:IrregularverbsService,
+    private phrasalVerbsService:PhrasalverbsService
+    
+    ) {
     
      
    }
@@ -44,6 +51,7 @@ export class EnglishTurkishComponent implements OnInit {
      this.get2();
      this.getIrregularVerbWord();
      this.getSynonymsWord();
+     this.getPhrasalVerbWord();
  
      this.startInterval();
      
@@ -127,15 +135,20 @@ export class EnglishTurkishComponent implements OnInit {
     
     this.randomWord = this.synonymsService.getAllSynonymsForRandomWord();
     
-
    }
 
    getIrregularVerbWord(){
     
     this.randomIrregularVerbWord = this.irregularVerbsService.getAllIrregularVerbsForRandomWord();
     
-
    }
+
+   getPhrasalVerbWord(){
+    
+    this.randomPhrasalVerbWord = this.phrasalVerbsService.getAllPhrasalVerbsForRandomWord();
+    
+   }
+
   
  
    get(){
