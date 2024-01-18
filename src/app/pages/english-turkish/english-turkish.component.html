@@ -1,8 +1,24 @@
 <div class="container my-3">
-  <div class="row">
 
+  <div class="col-md-12 d-flex justify-content-center">
+    <div class="col-md-6"> <select class="form-select" [(ngModel)]="selectedDiv">
+      <option value="english-turkish">English-Turkish</option>
+      <option value="turkce-ingilizce">Türkçe-İngilizce</option>
+      <option value="synonsyms">Eş Anlamlı (Synonyms) Kelimeler</option>
+      <option value="irregular">Düzensiz Fiiller (Irregular Verbs)</option>
+      <option value="phrasal">Deyimsel/Edatlı Fiiller (Phrasal Verbs)</option>
+      <option value="autoword">Kelime Ezberle</option>
+      <option value="tenses">Tüm Zamanlar</option>
 
-    <div class="col-md-6 mb-3">
+    </select></div>
+    
+  </div>
+  
+  <div class="row my-3 d-flex justify-content-center">
+
+   
+
+    <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'english-turkish'">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title"> English-Turkish</h5>
@@ -49,7 +65,7 @@
 
 
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'turkce-ingilizce'">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title"> Türkçe-İngilizce</h5>
@@ -96,7 +112,7 @@
 
 
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'synonsyms'">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title">Eş Anlamlı (Synonyms) Kelimeler</h5>
@@ -122,10 +138,10 @@
       </div>
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'irregular'">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title">Düzensiz Fiiller (Irregular Verbs)
+          <h5 class="card-title">Düzensiz (Irregular) Fiiller 
             <span class="text-danger">V1</span> |
             <span class="text-primary">V2</span> |
             <span class="text-success">V3</span>
@@ -152,7 +168,7 @@
       </div>
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'phrasal'">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title">Deyimsel/Edatlı Fiiller (Phrasal Verbs)</h5>
@@ -179,7 +195,7 @@
     </div>
 
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'autoword'">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title"> Kelimeleri Ezberle</h5>
@@ -225,9 +241,36 @@
     </div>
 
 
+    <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'tenses'">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">TÜM ZAMANLAR (TENSES)</h5>
+        </div>
+        <div class="card-body">
+          
+          <select class="form-select" [(ngModel)]="selectedTense">
+            <option value="presentSimple">Present Simple - Yaparım</option>
+            <option value="presentContinuous">Present Continuous - Yapıyorum</option>
+          </select>
+            <div class="container my-3" *ngIf="selectedTense === 'presentSimple'">
+              <img [src]="presentSimpleImagePath" alt="Present Simple Tense" />
+              
+            </div>
+            <div class="container my-3" *ngIf="selectedTense === 'presentContinuous'">
+              <img [src]="presentContinuousImagePath" alt="Present Continous Tense" />
+              
+            </div>
+          
 
 
 
+        </div>
+      </div>
+    </div>
+
+
+
+    
 
   </div>
 

@@ -7,9 +7,19 @@ import { PhrasalverbsService } from '../services/phrasalverbs.service';
 @Component({
   selector: 'app-english-turkish',
   templateUrl: './english-turkish.component.html',
-  styleUrls: ['./english-turkish.component.css']
+  styleUrls: ['./english-turkish.component.css'],
+  styles: [`
+    .card-body .container img {
+      max-width: 100%;
+      height: auto;
+    } `]
 })
 export class EnglishTurkishComponent implements OnInit {
+
+  selectedDiv: string = 'english-turkish';
+  selectedTense: string = 'presentSimple';
+  presentSimpleImagePath: string = 'assets/images/present-simple.png';
+  presentContinuousImagePath: string = 'assets/images/present-continuous.png';
 
   @ViewChild('userInputField', { static: false }) userInputField!: ElementRef;
 @ViewChild('userInputEnField', { static: false }) userInputEnField!: ElementRef;
@@ -175,6 +185,7 @@ export class EnglishTurkishComponent implements OnInit {
      this.isTranslationCorrect=false;
      // Rastgele bir kelime seçme
  let keys = Array.from(this.verbDictionary.keys());
+ 
  //1-10 arası index belirliyor.
   this.randomKey = keys[Math.floor(Math.random() * 10)];
  
