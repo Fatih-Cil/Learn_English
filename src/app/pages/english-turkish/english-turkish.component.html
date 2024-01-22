@@ -2,21 +2,21 @@
 
   <div class="col-md-12 d-flex justify-content-center">
     <div class="col-md-6"> <select class="form-select" [(ngModel)]="selectedDiv">
-      <option value="english-turkish">English-Turkish</option>
-      <option value="turkce-ingilizce">Türkçe-İngilizce</option>
-      <option value="synonsyms">Eş Anlamlı (Synonyms) Kelimeler</option>
-      <option value="irregular">Düzensiz Fiiller (Irregular Verbs)</option>
-      <option value="phrasal">Deyimsel/Edatlı Fiiller (Phrasal Verbs)</option>
-      <option value="autoword">Kelime Ezberle</option>
-      <option value="tenses">Tüm Zamanlar</option>
+        <option value="english-turkish">English-Turkish</option>
+        <option value="turkce-ingilizce">Türkçe-İngilizce</option>
+        <option value="synonsyms">Eş Anlamlı (Synonyms) Kelimeler</option>
+        <option value="irregular">Düzensiz Fiiller (Irregular Verbs)</option>
+        <option value="phrasal">Deyimsel/Edatlı Fiiller (Phrasal Verbs)</option>
+        <option value="autoword">Kelime Ezberle</option>
+        <option value="tenses">Tüm Zamanlar</option>
 
-    </select></div>
-    
+      </select></div>
+
   </div>
-  
+
   <div class="row my-3 d-flex justify-content-center">
 
-   
+
 
     <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'english-turkish'">
       <div class="card">
@@ -89,7 +89,7 @@
             <div class="d-flex align-items-center">
               <input #userInputField
                 [ngStyle]="{'background-color': isTranslationCorrect2 ? 'green' : 'red','color': 'white'} "
-                class="form-control"#userInputEnField [(ngModel)]="userInputEn" (input)="checkTranslation2()">
+                class="form-control" #userInputEnField [(ngModel)]="userInputEn" (input)="checkTranslation2()">
               <button type="button" class="btn btn-outline-dark mx-2" (click)="hint2()">İpucu</button>
             </div>
           </div>
@@ -141,7 +141,7 @@
     <div class="col-md-6 mb-3" *ngIf="selectedDiv === 'irregular'">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title">Düzensiz (Irregular) Fiiller 
+          <h5 class="card-title">Düzensiz (Irregular) Fiiller
             <span class="text-danger">V1</span> |
             <span class="text-primary">V2</span> |
             <span class="text-success">V3</span>
@@ -160,9 +160,10 @@
             <div class="col-md-12 d-flex justify-content-center my-3">
 
               <button *ngFor="let irregularVerb of randomIrregularVerbWord.irregularVerb;let i = index" type="button"
-                class="btn" [ngClass]="{'btn-outline-danger': i === 0, 'btn-outline-primary': i === 1, 'btn-outline-success': i === 2}">{{irregularVerb}}</button>
+                class="btn"
+                [ngClass]="{'btn-outline-danger': i === 0, 'btn-outline-primary': i === 1, 'btn-outline-success': i === 2}">{{irregularVerb}}</button>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -219,20 +220,20 @@
             </button>
 
           </div>
-         
-            <div class="container my-3">
 
-              <div class="col-md-12 d-flex justify-content-center my-3">
-  
-                <button type="button" class="btn btn-secondary ">{{autorandomKey}}</button>
-              </div>
-              <div class="col-md-12 d-flex justify-content-center my-3">
-                <button type="button" class="btn btn-outline-primary ">{{autoturkishEquivalent}}</button>
-  
-              </div>
+          <div class="container my-3">
+
+            <div class="col-md-12 d-flex justify-content-center my-3">
+
+              <button type="button" class="btn btn-secondary ">{{autorandomKey}}</button>
             </div>
-            
-          
+            <div class="col-md-12 d-flex justify-content-center my-3">
+              <button type="button" class="btn btn-outline-primary ">{{autoturkishEquivalent}}</button>
+
+            </div>
+          </div>
+
+
 
 
 
@@ -247,20 +248,166 @@
           <h5 class="card-title">TÜM ZAMANLAR (TENSES)</h5>
         </div>
         <div class="card-body">
-          
+
           <select class="form-select" [(ngModel)]="selectedTense">
-            <option value="presentSimple">Present Simple - Yaparım</option>
-            <option value="presentContinuous">Present Continuous - Yapıyorum</option>
+            <option value="presentSimple">Present Simple (Yaparım)</option>
+            <option value="presentContinuous">Present Continuous (Yapıyorum)</option>
+            <option value="presentPerfect">Present Perfect (Yaptım - zaman belirtmeksizin)</option>
+            <option value="presentPerfectContinuous">Present Perfect Continuous (Yapıyorum-yapılan eğlemin süresi belli)
+            </option>
+            <option value="pastSimple">Past Simple (Yaptım)</option>
+            <option value="pastContinuous">Past Continuous (Yapıyordum)</option>
+            <option value="pastPerfect">Past Perfect (Yapmıştım)</option>
+            <option value="pastPerfectContinuous">Past Perfect Continuous (Yapıyordum)</option>
+            <option value="futureSimple">Future Simple (Yapacağım )</option>
+            <option value="futureContinuous">Future Continuous (Yapıyor olacağım)</option>
+            <option value="futurePerfect">Future Perfect (Yapmış olacağım)</option>
+            <option value="futurePerfectContinuous">Future Perfect Continuous (Yapıyor olacağım)</option>
           </select>
-            <div class="container my-3" *ngIf="selectedTense === 'presentSimple'">
-              <img [src]="presentSimpleImagePath" alt="Present Simple Tense" />
-              
+
+          <div class="container my-3" *ngIf="selectedTense === 'presentSimple'">
+            <img [src]="presentSimpleImagePath" alt="Present Simple Tense" />
+            
+            <div class="card">
+              <div class="card-header text-success">
+                Olumlu Cümle
+              </div>
+              <div class="card-body">
+                <div class="btn-group1" role="group" aria-label="Basic example">
+                  
+                  <button type="button" class="btn btn-success btn-sm">I, we, you, they</button>
+                  <button type="button" class="btn btn-warning btn-sm">V</button>
+                  <p>I read a book every day. (Her gün kitap okurum.)</p>
+                </div>
+              </div>
             </div>
-            <div class="container my-3" *ngIf="selectedTense === 'presentContinuous'">
-              <img [src]="presentContinuousImagePath" alt="Present Continous Tense" />
-              
+            <div class="card">
+              <div class="card-header text-success">
+                Olumlu Cümle
+              </div>
+              <div class="card-body">
+                <div class="btn-group2" role="group" aria-label="Basic example">
+                  
+                  <button type="button" class="btn btn-success btn-sm">he, she, it</button>
+                  <button type="button" class="btn btn-warning btn-sm">Vs / es / ies</button>
+                  <p>He reads a book every Tuesday. (O her salı kitap okur.)</p>
+                </div>
+              </div>
             </div>
-          
+            
+            <div class="card">
+              <div class="card-header text-danger">
+                Olumsuz Cümle
+              </div>
+              <div class="card-body">
+                <div class="btn-group3" role="group" aria-label="Basic example">
+                 
+                  <button type="button" class="btn btn-success btn-sm">I, we, you, they</button>
+                  <button type="button" class="btn btn-danger btn-sm">don't</button>
+                  <button type="button" class="btn btn-warning btn-sm">V</button>
+                  <p>I don't read a book. (Ben kitap okumam.)</p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header text-danger">
+                Olumsuz Cümle
+              </div>
+              <div class="card-body">
+                <div class="btn-group4" role="group" aria-label="Basic example">
+                 
+                  <button type="button" class="btn btn-success btn-sm">he, she, it</button>
+                  <button type="button" class="btn btn-danger btn-sm">doesn't</button>
+                  <button type="button" class="btn btn-warning btn-sm">V</button>
+                  <p>He doesn't read a book. (O kitap okumaz.)</p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header text-primary">
+                Soru Cümlesi
+              </div>
+              <div class="card-body">
+                <div class="btn-group4" role="group" aria-label="Basic example">
+                 
+                  <button type="button" class="btn btn-primary btn-sm">Wh</button>
+                  <button type="button" class="btn btn-danger btn-sm">do</button>
+                  <button type="button" class="btn btn-success btn-sm">I, we, you, they</button>
+                  <button type="button" class="btn btn-warning btn-sm">V</button>
+                  <button type="button" class="btn btn-info btn-sm">Time</button>
+                  <p>When do you read a book? (Ne zaman kitap okursun?)</p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header text-primary">
+                Soru Cümlesi
+              </div>
+              <div class="card-body">
+                <div class="btn-group4" role="group" aria-label="Basic example">
+                 
+                  <button type="button" class="btn btn-primary btn-sm">Wh</button>
+                  <button type="button" class="btn btn-danger btn-sm">does</button>
+                  <button type="button" class="btn btn-success btn-sm">he, she, it</button>
+                  <button type="button" class="btn btn-warning btn-sm">V</button>
+                  <button type="button" class="btn btn-info btn-sm">Time</button>
+            <p>Which does she read a book? (O hangi kitabı okur?)</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'presentContinuous'">
+            <img [src]="presentContinuousImagePath" alt="Present Continous Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'presentPerfect'">
+            <img [src]="presentPerfectImagePath" alt="Present Simple Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'presentPerfectContinuous'">
+            <img [src]="presentPerfectContinuousImagePath" alt="Present Continous Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'pastSimple'">
+            <img [src]="pastSimpleImagePath" alt="Past Simple Tense" />
+            <p>I watch<span class="text-danger">ed</span> TV.</p>
+            <p>I <span class="text-danger">didn't</span>watch TV.</p>
+            <p>What <span class="text-danger">did</span> you watch TV?</p>
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'pastContinuous'">
+            <img [src]="pastContinuousImagePath" alt="Past Continous Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'pastPerfect'">
+            <img [src]="pastPerfectImagePath" alt="Past Simple Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'pastPerfectContinuous'">
+            <img [src]="pastPerfectContinuousImagePath" alt="Past Continous Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'futureSimple'">
+            <img [src]="futureSimpleImagePath" alt="Future Simple Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'futureContinuous'">
+            <img [src]="futureContinuousImagePath" alt="Future Continous Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'futurePerfect'">
+            <img [src]="futurePerfectImagePath" alt="Future Simple Tense" />
+          </div>
+
+          <div class="container my-3" *ngIf="selectedTense === 'futurePerfectContinuous'">
+            <img [src]="futurePerfectContinuousImagePath" alt="Future Continous Tense" />
+          </div>
+
+
+
+
 
 
 
@@ -270,7 +417,7 @@
 
 
 
-    
+
 
   </div>
 

@@ -18,8 +18,18 @@ export class EnglishTurkishComponent implements OnInit {
 
   selectedDiv: string = 'english-turkish';
   selectedTense: string = 'presentSimple';
-  presentSimpleImagePath: string = 'assets/images/present-simple.png';
-  presentContinuousImagePath: string = 'assets/images/present-continuous.png';
+  presentSimpleImagePath: string = 'assets/images/PRESENT-SIMPLE.png';
+  presentContinuousImagePath: string = 'assets/images/PRESENT-CONTINUOUS.png';
+  presentPerfectImagePath: string = 'assets/images/PRESENT-PERFECT.png';
+  presentPerfectContinuousImagePath: string = 'assets/images/PRESENT-PERFECT-CONTINUOUS.png';
+  pastSimpleImagePath: string = 'assets/images/PAST-SIMPLE.png';
+  pastContinuousImagePath: string = 'assets/images/PAST-CONTINUOUS.png';
+  pastPerfectImagePath: string = 'assets/images/PAST-PERFECT.png';
+  pastPerfectContinuousImagePath: string = 'assets/images/PAST-PERFECT-CONTINUOUS.png';
+  futureSimpleImagePath: string = 'assets/images/FUTURE-SIMPLE.png';
+  futureContinuousImagePath: string = 'assets/images/FUTURE-CONTINUOUS.png';
+  futurePerfectImagePath: string = 'assets/images/FUTURE-PERFECT.png';
+  futurePerfectContinuousImagePath: string = 'assets/images/FUTURE-PERFECT-CONTINUOUS.png';
 
   @ViewChild('userInputField', { static: false }) userInputField!: ElementRef;
 @ViewChild('userInputEnField', { static: false }) userInputEnField!: ElementRef;
